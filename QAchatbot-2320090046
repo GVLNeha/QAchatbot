@@ -1,1 +1,56 @@
+import nltk
+from nltk.chat.util import Chat, reflections
+
+# Pairs of patterns and responses
+pairs = [
+    [
+        r"hi|hello|hey",
+        ["Hello! How can I help you?", "Hi there! What can I do for you?"]
+    ],
+    [
+        r"what is your name?",
+        ["I am a chatbot created to answer your questions."]
+    ],
+    [
+        r"how are you?",
+        ["I'm just a program, but I'm here to help you! How can I assist you?"]
+    ],
+    [
+        r"what can you do?",
+        ["I can answer questions, chat with you, or provide information. What do you need?"]
+    ],
+    [
+        r"exit|bye",
+        ["Goodbye! Have a great day!", "See you later!"]
+    ]
+]
+
+# Reflections for pronoun adjustments
+reflections = {
+    "i am": "you are",
+    "i was": "you were",
+    "i": "you",
+    "i'd": "you would",
+    "i've": "you have",
+    "i'll": "you will",
+    "my": "your",
+    "you are": "I am",
+    "you were": "I was",
+    "you've": "I have",
+    "you'll": "I will",
+    "your": "my",
+    "yours": "mine",
+    "you": "me",
+    "me": "you"
+}
+
+# Creating the chatbot
+def qa_chatbot():
+    print("Chatbot: Hi! Type 'exit' to end the conversation.")
+    chatbot = Chat(pairs, reflections)
+    chatbot.converse()
+
+# Run the chatbot
+if __name__ == "__main__":
+    qa_chatbot()
 
